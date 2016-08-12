@@ -24,6 +24,7 @@ namespace Challenge3 {
             var scoreData = JsonConvert.DeserializeObject<BowlingScoreModel>(jsonData);
 
             Console.WriteLine($"スコア: {new BowlingScoreCalculation(scoreData).Calc()}");
+            Console.ReadKey();
         }
     }
 }
