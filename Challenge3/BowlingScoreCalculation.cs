@@ -65,7 +65,7 @@ namespace Challenge3 {
         /// <param name="throwIndex"></param>
         /// <returns></returns>
         private int StrikeAddend(int throwIndex) {
-            //次回の投球､次々回の投球で倒したピンの数を集計し､返す
+            //次回の投球､次々回の投球で倒したピンの数を集計して返す
             return this.FramesData.Skip(++throwIndex).Take(2).Sum(g => g.Pin);
         }
 
