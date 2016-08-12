@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Challenge3.Model;
+using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +22,13 @@ namespace Challenge3 {
         #endregion
 
         static void Main(string[] args) {
+            var jsonData = System.IO.File.ReadAllText(JsonFilePath.Sample141);
+
+            //JSONデータをデータモデルにシリアライズ
+            var scoreData = JsonConvert.DeserializeObject<BowlingScoreModel>(jsonData);
+
+
+
         }
     }
 }
