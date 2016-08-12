@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Challenge3.Model {
@@ -7,12 +8,12 @@ namespace Challenge3.Model {
         [JsonProperty("frame")]
         public int Frame { get; set; }
         [JsonProperty("game_data")]
-        public GamesData[] GameData { get; set; }
+        public IEnumerable<FramesData> GameData { get; set; }
         [JsonProperty("pin_max")]
         public int PinMax { get; set; }
 
         [JsonObject("game_data")]
-        public class GamesData {
+        public class FramesData {
             [JsonProperty("date")]
             public DateTime Date { get; set; }
             [JsonProperty("pin")]
