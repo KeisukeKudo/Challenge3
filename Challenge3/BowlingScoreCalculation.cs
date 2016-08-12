@@ -4,7 +4,7 @@ using Challenge3.Model;
 
 namespace Challenge3 {
     public class BowlingScoreCalculation {
-        private readonly List<BowlingScoreModel.FramesData> FramesData;
+        private readonly List<BowlingScoreModel.FrameData> FramesData;
         private readonly int FrameCount;
         private readonly int PinMax;
 
@@ -14,7 +14,7 @@ namespace Challenge3 {
             this.PinMax = bowlingScoreModel.PinMax;
 
             //Date基準で昇順ソート
-            this.FramesData = bowlingScoreModel.GameData.OrderBy(g => g.Date).ToList();
+            this.FramesData = bowlingScoreModel.FramesData.OrderBy(g => g.Date).ToList();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Challenge3 {
             for (var i = 0; i < this.FrameCount - 1; i++) {
                 //次の投球へ進む
                 throwIndex++;
-                BowlingScoreModel.FramesData frameData = this.FramesData[throwIndex];
+                BowlingScoreModel.FrameData frameData = this.FramesData[throwIndex];
 
                 int fallingDownPin = frameData.Pin;
 

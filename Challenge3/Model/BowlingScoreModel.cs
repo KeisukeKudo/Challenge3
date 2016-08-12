@@ -8,12 +8,12 @@ namespace Challenge3.Model {
         [JsonProperty("frame")]
         public int Frame { get; set; }
         [JsonProperty("game_data")]
-        public IEnumerable<FramesData> GameData { get; set; }
+        public IEnumerable<FrameData> FramesData { get; set; }
         [JsonProperty("pin_max")]
         public int PinMax { get; set; }
 
         [JsonObject("game_data")]
-        public class FramesData {
+        public class FrameData {
             [JsonProperty("date")]
             public DateTime Date { get; set; }
             [JsonProperty("pin")]
