@@ -20,7 +20,7 @@ namespace Challenge3 {
         static void Main(string[] args) {
             var jsonData = System.IO.File.ReadAllText(JsonFilePath.Sample141);
 
-            //JSONデータをデータモデルにシリアライズ
+            //JSONデータをデータモデルにデシリアライズ
             var scoreData = JsonConvert.DeserializeObject<BowlingScoreModel>(jsonData);
 
             Console.WriteLine($"スコア: {new BowlingScoreCalculation(scoreData).Calc()}");
