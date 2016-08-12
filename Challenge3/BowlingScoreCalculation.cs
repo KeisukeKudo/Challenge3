@@ -35,10 +35,10 @@ namespace Challenge3 {
                 throwIndex++;
                 BowlingScoreModel.FrameData frameData = this.FramesData[throwIndex];
 
-                int fallingDownPin = frameData.Pin;
+                int numberOfKnockingDown = frameData.Pin;
 
                 //ストライク判定
-                if (fallingDownPin == this.PinMax) {
+                if (numberOfKnockingDown == this.PinMax) {
                     score += this.StrikeAddend(throwIndex);
                     continue;
                 }
@@ -48,10 +48,10 @@ namespace Challenge3 {
                 frameData = this.FramesData[throwIndex];
 
                 //前回の投球で倒したピンの数に今回の投球で倒したピンの数を加算
-                fallingDownPin += frameData.Pin;
+                numberOfKnockingDown += frameData.Pin;
 
                 //スペア判定
-                if (fallingDownPin == this.PinMax) {
+                if (numberOfKnockingDown == this.PinMax) {
                     score += this.SpareAddend(throwIndex);
                 }
             }
