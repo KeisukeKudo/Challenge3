@@ -43,7 +43,7 @@ namespace Challenge3 {
                     continue;
                 }
 
-                //1フレーム最大2投は担保されているので､ストライクでない場合は次の投球へ進む
+                //1フレーム最大2投は保証されているので､ストライクでない場合は次の投球へ進む
                 throwIndex++;
                 frameData = this.FramesData[throwIndex];
 
