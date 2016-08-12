@@ -5,12 +5,12 @@ using Challenge3.Model;
 namespace Challenge3 {
     public class BowlingScoreCalculation {
         private readonly List<BowlingScoreModel.FramesData> FramesData;
-        private readonly int Frame;
+        private readonly int FrameCount;
         private readonly int PinMax;
 
         public BowlingScoreCalculation(BowlingScoreModel bowlingScoreModel) {
             //フレーム数とピンの最大値を取得
-            this.Frame = bowlingScoreModel.Frame;
+            this.FrameCount = bowlingScoreModel.Frame;
             this.PinMax = bowlingScoreModel.PinMax;
 
             //Date基準で昇順ソート
@@ -30,7 +30,7 @@ namespace Challenge3 {
             //どっちが良いか意見が欲しいです
             var throwIndex = -1;
             //フレーム数分ループ ※最終フレームは単純集計なので無視
-            for (var i = 0; i < this.Frame - 1; i++) {
+            for (var i = 0; i < this.FrameCount - 1; i++) {
                 //次の投球へ進む
                 throwIndex++;
                 BowlingScoreModel.FramesData frameData = this.FramesData[throwIndex];
