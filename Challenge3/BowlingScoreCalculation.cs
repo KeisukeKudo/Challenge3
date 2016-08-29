@@ -27,7 +27,9 @@ namespace Challenge3 {
                 return this.GetPerfectScore();
             }
 
-
+            if (this.IsAllGutter()) {
+                return 0;
+            }
 
             //倒したピンの数を単純集計
             var score = this.FramesData.Sum(g => g.Pin);
@@ -101,6 +103,14 @@ namespace Challenge3 {
         private int GetPerfectScore() {
             var strikeFrameScore = this.PinMax * 3;
             return ((this.FrameCount - 1) * strikeFrameScore) + strikeFrameScore;
+        }
+
+        /// <summary>
+        /// 全てガター(倒した数が0)かどうか
+        /// </summary>
+        /// <returns></returns>
+        private bool IsAllGutter() {
+            return this.FramesData.All(f => f.Pin == 0);
         }
 
     }
