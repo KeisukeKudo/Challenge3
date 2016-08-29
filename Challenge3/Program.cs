@@ -13,6 +13,8 @@ namespace Challenge3 {
 
             //各テストファイル
             public static readonly string Sample141 = $"{JsonDirectry}sample_data_141.json";
+            public static readonly string Sample0 = $"{JsonDirectry}sample_data_0.json";
+            public static readonly string Sample300 = $"{JsonDirectry}sample_data_300.json";
         }
 
         #endregion
