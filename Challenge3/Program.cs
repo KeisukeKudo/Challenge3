@@ -1,32 +1,27 @@
 ﻿using System;
+using System.IO;
 using Challenge3.Model;
 using Newtonsoft.Json;
+using static System.Console;
 
 namespace Challenge3 {
     class Program {
-
-        #region テスト用JSONファイル名定義クラス
-
-        private static class JsonFilePath {
-            //JSONファイルディレクトリ
-            private const string JsonDirectry = "./Json/";
-
-            //各テストファイル
-            public static readonly string Sample141 = $"{JsonDirectry}sample_data_141.json";
-            public static readonly string Sample0 = $"{JsonDirectry}sample_data_0.json";
-            public static readonly string Sample300 = $"{JsonDirectry}sample_data_300.json";
-        }
-
-        #endregion
-
+        
         static void Main(string[] args) {
-            var jsonData = System.IO.File.ReadAllText(JsonFilePath.Sample141);
+            //Jsonディレクトリ内の全てのJsonファイルパスを取得
+            var smpleFiles = Directory.EnumerateFiles(@".\Json", "*.json", SearchOption.AllDirectories);
+            foreach (var path in smpleFiles) {
+                var jsonData = System.IO.File.ReadAllText(path);
 
-            //JSONデータをデータモデルにデシリアライズ
-            var scoreData = JsonConvert.DeserializeObject<BowlingScoreModel>(jsonData);
+                //JSONデータをデータモデルにデシリアライズ
+                var scoreData = JsonConvert.DeserializeObject<BowlingScoreModel>(jsonData);
 
-            Console.WriteLine($"スコア: {new BowlingScoreCalculation(scoreData).Calc()}");
-            Console.ReadKey();
+                WriteLine($"ファイル名: {Path.GetFileName(path)}");
+                WriteLine($"スコア: {new BowlingScoreCalculation(scoreData).Calc()}");
+                WriteLine();
+            }
+            
+            ReadKey();
         }
     }
 }
