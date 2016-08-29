@@ -22,6 +22,13 @@ namespace Challenge3 {
         /// </summary>
         /// <returns></returns>
         public int Calc() {
+
+            if (this.IsPerfect()) {
+                return this.GetPerfectScore();
+            }
+
+
+
             //倒したピンの数を単純集計
             var score = this.FramesData.Sum(g => g.Pin);
 
@@ -77,6 +84,23 @@ namespace Challenge3 {
         private int SpareAddend(int throwIndex) {
             //次回の投球で倒したピンの数を返す
             return this.FramesData[++throwIndex].Pin;
+        }
+
+        /// <summary>
+        /// 全ての投球でストライクかどうか
+        /// </summary>
+        /// <returns></returns>
+        private bool IsPerfect() {
+            return this.FramesData.All(f => f.Pin == this.PinMax);
+        }
+
+        /// <summary>
+        /// パーフェクトゲームのスコア
+        /// </summary>
+        /// <returns></returns>
+        private int GetPerfectScore() {
+            var strikeFrameScore = this.PinMax * 3;
+            return ((this.FrameCount - 1) * strikeFrameScore) + strikeFrameScore;
         }
 
     }
