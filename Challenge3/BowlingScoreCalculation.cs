@@ -16,7 +16,7 @@ namespace Challenge3 {
             this.PinMax = bowlingScoreModel.PinMax;
 
             //Date基準で昇順ソート
-            this.FramesData = bowlingScoreModel.FramesData.OrderBy(g => g.Date).ToList();
+            this.FramesData = bowlingScoreModel.FramesData.OrderBy(g => g.Date);
         }
 
         /// <summary>
