@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Challenge3.Model;
+using static Challenge3.Model.BowlingScoreModel;
 
 namespace Challenge3 {
     public class BowlingScoreCalculation {
-        private readonly List<BowlingScoreModel.FrameData> FramesData;
+        private readonly IEnumerable<FrameData> FramesData;
         private readonly int FrameCount;
         private readonly int PinMax;
+
 
         public BowlingScoreCalculation(BowlingScoreModel bowlingScoreModel) {
             //フレーム数とピンの最大値を取得
@@ -34,6 +36,7 @@ namespace Challenge3 {
             //倒したピンの数を単純集計
             var score = this.FramesData.Sum(g => g.Pin);
 
+            var framesData = this.FramesData.ToList();
             //forの最初でインクリメントするので-1から始める
             //※迷ったポイント ここでは0代入で､for文頭でif(throwIndex != 0)で加算のほうがよかったかも
             //どっちが良いか意見が欲しいです
@@ -42,7 +45,7 @@ namespace Challenge3 {
             for (var i = 0; i < this.FrameCount - 1; i++) {
                 //次の投球へ進む
                 throwIndex++;
-                BowlingScoreModel.FrameData frameData = this.FramesData[throwIndex];
+                FrameData frameData = framesData[throwIndex];
 
                 int numberOfKnockingDown = frameData.Pin;
 
@@ -54,7 +57,7 @@ namespace Challenge3 {
 
                 //1フレーム最大2投は保証されているので､ストライクでない場合は次の投球へ進む
                 throwIndex++;
-                frameData = this.FramesData[throwIndex];
+                frameData = framesData[throwIndex];
 
                 //前回の投球で倒したピンの数に今回の投球で倒したピンの数を加算
                 numberOfKnockingDown += frameData.Pin;
@@ -85,7 +88,7 @@ namespace Challenge3 {
         /// <returns></returns>
         private int SpareAddend(int throwIndex) {
             //次回の投球で倒したピンの数を返す
-            return this.FramesData[++throwIndex].Pin;
+            return this.FramesData.Skip(++throwIndex).Take(1).Min(e => e.Pin);
         }
 
         /// <summary>
