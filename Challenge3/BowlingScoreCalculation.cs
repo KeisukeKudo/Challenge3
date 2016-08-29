@@ -104,8 +104,7 @@ namespace Challenge3 {
         /// </summary>
         /// <returns></returns>
         private int GetPerfectScore() {
-            var strikeFrameScore = this.PinMax * 3;
-            return ((this.FrameCount - 1) * strikeFrameScore) + strikeFrameScore;
+            return this.FrameCount * (this.PinMax * 3);
         }
 
         /// <summary>
