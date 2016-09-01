@@ -28,13 +28,14 @@ namespace Challenge3 {
             if (this.IsPerfect()) {
                 return this.GetPerfectScore();
             }
-
-            if (this.IsAllGutter()) {
-                return 0;
-            }
-
+            
             //倒したピンの数を単純集計
             var score = this.FramesData.Sum(g => g.Pin);
+
+            //集計値が0の場合は全てガターと判断し､結果を返す
+            if(score == 0) {
+                return score;
+            }
 
             var framesData = this.FramesData.ToList();
             //forの最初でインクリメントするので-1から始める
@@ -105,14 +106,6 @@ namespace Challenge3 {
         /// <returns></returns>
         private int GetPerfectScore() {
             return this.FrameCount * (this.PinMax * 3);
-        }
-
-        /// <summary>
-        /// 全てガター(倒した数が0)かどうか
-        /// </summary>
-        /// <returns></returns>
-        private bool IsAllGutter() {
-            return this.FramesData.All(f => f.Pin == 0);
         }
 
     }
