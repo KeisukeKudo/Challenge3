@@ -37,7 +37,6 @@ namespace Challenge3 {
                 return score;
             }
 
-            var framesData = this.FramesData.ToList();
             //forの最初でインクリメントするので-1から始める
             //※迷ったポイント ここでは0代入で､for文頭でif(throwIndex != 0)で加算のほうがよかったかも
             //どっちが良いか意見が欲しいです
@@ -46,10 +45,10 @@ namespace Challenge3 {
             for (var i = 0; i < this.FrameCount - 1; i++) {
                 //次の投球へ進む
                 throwIndex++;
-                FrameData frameData = framesData[throwIndex];
+                var frameData = this.FramesData.ElementAt(throwIndex);
 
-                int numberOfKnockingDown = frameData.Pin;
-
+                var numberOfKnockingDown = frameData.Pin;
+                
                 //ストライク判定
                 if (numberOfKnockingDown == this.PinMax) {
                     score += this.StrikeAddend(throwIndex);
@@ -58,7 +57,7 @@ namespace Challenge3 {
 
                 //1フレーム最大2投は保証されているので､ストライクでない場合は次の投球へ進む
                 throwIndex++;
-                frameData = framesData[throwIndex];
+                frameData = this.FramesData.ElementAt(throwIndex); ;
 
                 //前回の投球で倒したピンの数に今回の投球で倒したピンの数を加算
                 numberOfKnockingDown += frameData.Pin;
@@ -89,7 +88,7 @@ namespace Challenge3 {
         /// <returns></returns>
         private int SpareAddend(int throwIndex) {
             //次回の投球で倒したピンの数を返す
-            return this.FramesData.Skip(++throwIndex).Take(1).Min(e => e.Pin);
+            return this.FramesData.ElementAt(++throwIndex).Pin;
         }
 
         /// <summary>
