@@ -47,4 +47,8 @@ pin は 1≦ p_i ≦ b を満たす整数
 ・余力があれば、スコア表の出力にもチャレンジしてみましょう  
 
 ## 使用ライブラリ
-[Json.NET](http://www.newtonsoft.com/json)
+[Json.NET](http://www.newtonsoft.com/json)  
+>The MIT License (MIT)  
+>Copyright (c) 2007 James Newton-King  
+
+[Json.NET LICENSE](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md)
