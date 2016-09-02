@@ -51,4 +51,7 @@ pin は 1≦ p_i ≦ b を満たす整数
 >The MIT License (MIT)  
 >Copyright (c) 2007 James Newton-King  
 
-[Json.NET LICENSE](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md)
+[Json.NET LICENSE](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md)  
+
+## イメージ
+![challenge3_image](https://github.com/KeisukeKudo/ImageStorage/blob/master/challenge3_image.png)
