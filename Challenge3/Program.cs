@@ -10,7 +10,7 @@ namespace Challenge3 {
             //Jsonディレクトリ内の全てのJsonファイルパスを取得
             var smpleFiles = Directory.EnumerateFiles(@".\Json", "*.json", SearchOption.AllDirectories);
             foreach (var path in smpleFiles) {
-                var jsonData = System.IO.File.ReadAllText(path);
+                var jsonData = File.ReadAllText(path);
 
                 //JSONデータをデータモデルにデシリアライズ
                 var scoreData = JsonConvert.DeserializeObject<BowlingScoreModel>(jsonData);
