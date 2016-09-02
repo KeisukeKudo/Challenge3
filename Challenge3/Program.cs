@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Challenge3.Model;
 using Newtonsoft.Json;
 using static System.Console;
